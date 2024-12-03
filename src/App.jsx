@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import AllBooks from "../components/all-books"
 import ShowSelectedBook from "../components/single-book"
@@ -10,11 +10,12 @@ import Profile from "../components/profile"
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem(`token`))
+  const navigate = useNavigate()
 
   const logout = () => {
     localStorage.removeItem("token")
     setToken(``)
-    location.reload()
+    navigate("/allbooks")
   }
 
   return (
@@ -32,7 +33,7 @@ const App = () => {
         <Route path="/register" element={<Register />}/>
         <Route path="/allbooks" element={<AllBooks/>}/>
         <Route path="/allbooks/:id" element={<ShowSelectedBook/>}/>
-        <Route path="/profile" element={<Profile />}/>
+        <Route path="/profile" element={<Profile token={token}/>}/>
       </Routes>
     </>
   )

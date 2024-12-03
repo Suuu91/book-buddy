@@ -8,7 +8,6 @@ const Login = ({setToken, token}) => {
 
   const onSubmit = async(event) => {
     event.preventDefault()
-
     const response = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login`, {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
@@ -17,14 +16,13 @@ const Login = ({setToken, token}) => {
         password: password
       })
     })
-
     const tokenBack = await response.json();
     const accessToken = tokenBack.token;
     setToken(accessToken);
     localStorage.setItem('token', accessToken);
-
-      setEmail(``)
-      setPassword(``)
+    setEmail(``)
+    setPassword(``)
+    navigate("/allbooks")
     }
 
   return (
