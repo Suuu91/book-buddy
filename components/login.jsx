@@ -11,9 +11,7 @@ const Login = ({setToken, token}) => {
 
     const response = await fetch(`https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login`, {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         email: email,
         password: password

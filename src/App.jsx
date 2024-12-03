@@ -6,6 +6,7 @@ import MainPage from "../components/homepage"
 import NavBar from "../components/navbar"
 import Login from "../components/login"
 import Register from "../components/register"
+import Profile from "../components/profile"
 
 const App = () => {
   const [token, setToken] = useState(localStorage.getItem(`token`))
@@ -19,7 +20,7 @@ const App = () => {
   return (
     <>
       <nav>
-        <NavBar/> 
+        <NavBar token={token}/> 
         {
           token? <button onClick={logout}>Logout</button>: null
         }
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/register" element={<Register />}/>
         <Route path="/allbooks" element={<AllBooks/>}/>
         <Route path="/allbooks/:id" element={<ShowSelectedBook/>}/>
+        <Route path="/profile" element={<Profile />}/>
       </Routes>
     </>
   )
