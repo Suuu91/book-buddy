@@ -19,12 +19,12 @@ const AllBooks = () => {
     <>
     <h1>All Books</h1>
 
-    <section id="book-lists">
+    <section id="booklists">
       {allBooks.map((book) => {
         const goSingleBook = () => {navigate(`/allbooks/${book.id}`)}
 
           return (
-            <section key={book.id} onClick={() => goSingleBook()}>
+            <section key={book.id} onClick={goSingleBook}>
                 <img   
                   width={200}
                   height={300}
